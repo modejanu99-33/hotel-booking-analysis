@@ -282,11 +282,33 @@ Reservations are typically made more than three months before arrival.
 |---------|---------:|
 | Minimum | 0 |
 | Average | 3.43 |
+| 99th Percentile | 14 |
 | Maximum | 69 |
 
-Most stays are relatively short, although a small number of extremely long stays are present.
+While the longest recorded stay lasted 69 nights, 99% of all reservations were 14 nights or shorter. This indicates that extremely long stays are rare outliers and do not represent typical customer behavior.
 
----
+<details>
+<summary>View SQL Queries</summary>
+
+```sql
+SELECT
+    MIN(stays_in_week_nights + stays_in_weekend_nights) AS min_nights,
+    ROUND(
+        AVG(stays_in_week_nights + stays_in_weekend_nights),
+        2
+    ) AS avg_nights,
+    MAX(stays_in_week_nights + stays_in_weekend_nights) AS max_nights
+FROM hotel_bookings;
+
+SELECT
+    PERCENTILE_CONT(0.99)
+    WITHIN GROUP (
+        ORDER BY stays_in_week_nights + stays_in_weekend_nights
+    ) AS stay_99th_percentile
+FROM hotel_bookings;
+```
+
+</details>
 
 # Hypothesis Testing
 
