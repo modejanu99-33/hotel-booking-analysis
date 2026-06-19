@@ -31,8 +31,6 @@ The dataset contains:
 
 ## Tools Used
 
-- PostgreSQL
-- pgAdmin 4
 - SQL
 - Statistical Analysis
 
