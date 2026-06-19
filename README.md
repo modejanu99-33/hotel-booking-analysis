@@ -288,7 +288,7 @@ SELECT
 FROM hotel_bookings;
 
 SELECT
-    PERCENTILE_CONT(0.99)
+    PERCENTILE_CONT(0.95)
     WITHIN GROUP (ORDER BY lead_time)
 FROM hotel_bookings;
 ```
@@ -357,6 +357,79 @@ The probability of cancellation is approximately 14 percentage points higher for
 
 The results support alternative hypothesis (H₁). Reservations made at City Hotels are considerably more likely, approximately 14 percentage to be cancelled than reservations made at Resort Hotels.
 
+## H2: Longer lead times increase the probability of cancellation
+
+### Hypotheses
+
+**H₀:** The average lead time is the same for cancelled and non-cancelled reservations.
+
+**H₁:** Cancelled reservations have a higher average lead time than non-cancelled reservations.
+
+---
+
+### Average Lead Time by Reservation Status
+
+| Reservation Status | Bookings | Average Lead Time | Standard Deviation |
+|----------|----------:|----------:|----------:|
+| Not Cancelled | 75,166 | 79.98 | 91.11 |
+| Cancelled | 44,224 | 144.85 | 118.62 |
+
+Cancelled reservations were booked on average **64 days earlier** than reservations that were eventually completed.
+
+---
+
+### Cancellation Rate by Lead Time Group
+
+| Lead Time Group | Bookings | Cancellation Rate |
+|----------|----------:|----------:|
+| 0–30 days | 38,706 | 18.56% |
+| 31–90 days | 29,553 | 37.70% |
+| 91–180 days | 26,439 | 44.71% |
+| 180+ days | 24,692 | 57.01% |
+
+A clear positive relationship can be observed between lead time and cancellation rate. Reservations made more than 180 days before arrival were cancelled over three times more frequently than reservations made within 30 days of arrival.
+
+---
+
+### Interpretation
+
+The results suggest that customers who book far in advance are significantly more likely to cancel their reservations. One possible explanation is that plans are more likely to change when the booking is made many months before the arrival date.
+
+The large sample sizes provide strong evidence that the observed difference is not due to random variation.
+
+---
+
+### Conclusion
+
+The results strongly support **H₁**. Longer lead times are associated with substantially higher cancellation rates and appear to be an important predictor of reservation cancellations.
+
+<details>
+<summary>View SQL Queries</summary>
+
+```sql
+SELECT
+    CASE
+        WHEN lead_time <= 30 THEN '0-30 days'
+        WHEN lead_time <= 90 THEN '31-90 days'
+        WHEN lead_time <= 180 THEN '91-180 days'
+        ELSE '180+ days'
+    END AS lead_time_group,
+    COUNT(*) AS bookings,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
+FROM hotel_bookings
+GROUP BY lead_time_group
+ORDER BY lead_time_group;
+
+SELECT
+    is_canceled,
+    COUNT(*) AS bookings,
+    ROUND(AVG(lead_time),2) AS avg_lead_time,
+    ROUND(STDDEV(lead_time),2) AS std_lead_time
+FROM hotel_bookings
+GROUP BY is_canceled;
+```
+
+</details>
 # Conclusions
 
 *Work in progress.*
