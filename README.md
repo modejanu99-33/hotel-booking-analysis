@@ -342,6 +342,10 @@ Cancelled reservations were booked on average **64 days earlier** than reservati
 | 91–180 days | 26,439 | 44.71% |
 | 180+ days | 24,692 | 57.01% |
 
+<p align="center">
+  <img src="sql/lead_time_cancellation.png" width="700">
+</p>
+
 <details>
 <summary>View SQL Queries</summary>
 
@@ -379,33 +383,6 @@ The large sample sizes provide strong evidence that the observed difference is n
 
 The results strongly support **H₁**. Longer lead times are associated with substantially higher cancellation rates and appear to be an important predictor of reservation cancellations.
 
-<details>
-<summary>View SQL Queries</summary>
-
-```sql
-SELECT
-    CASE
-        WHEN lead_time <= 30 THEN '0-30 days'
-        WHEN lead_time <= 90 THEN '31-90 days'
-        WHEN lead_time <= 180 THEN '91-180 days'
-        ELSE '180+ days'
-    END AS lead_time_group,
-    COUNT(*) AS bookings,
-    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
-FROM hotel_bookings
-GROUP BY lead_time_group
-ORDER BY lead_time_group;
-
-SELECT
-    is_canceled,
-    COUNT(*) AS bookings,
-    ROUND(AVG(lead_time),2) AS avg_lead_time,
-    ROUND(STDDEV(lead_time),2) AS std_lead_time
-FROM hotel_bookings
-GROUP BY is_canceled;
-```
-
-</details>
 
 ## H3: Repeated guests are less likely to cancel reservations
 
@@ -423,6 +400,10 @@ GROUP BY is_canceled;
 |----------|----------:|----------:|
 | No | 115,580 | 37.79% |
 | Yes | 3,810 | 14.49% |
+
+<p align="center">
+  <img src="sql/repeat_guest_cancellation.png" width="700">
+</p>
 
 <details>
 <summary>View SQL Query</summary>
@@ -478,6 +459,9 @@ The results strongly support **H₁**. Repeated guests exhibit substantially low
 | No previous cancellations | 112,906 | 33.91% |
 | At least one previous cancellation | 6,484 | 91.64% |
 
+<p align="center">
+  <img src="sql/previous_cancellation_history.png" width="700">
+</p>
 
 <details>
 <summary>View SQL Query</summary>
