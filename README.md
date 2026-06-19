@@ -154,7 +154,139 @@ FROM hotel_bookings;
 
 # Exploratory Data Analysis
 
-*Work in progress.*
+## Hotel Distribution
+
+The dataset contains reservations from two hotel types.
+
+| Hotel | Bookings |
+|---------|---------:|
+| City Hotel | 79,330 |
+| Resort Hotel | 40,060 |
+
+City Hotels account for approximately two-thirds of all reservations in the dataset.
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    hotel,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY hotel
+ORDER BY bookings DESC;
+```
+
+</details>
+
+---
+
+## Overall Cancellation Rate
+
+A total of 44,224 reservations were cancelled.
+
+| Metric | Value |
+|---------|---------:|
+| Total Bookings | 119,390 |
+| Cancelled Bookings | 44,224 |
+| Cancellation Rate | 37.04% |
+
+More than one-third of all reservations were cancelled.
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    COUNT(*) AS bookings,
+    SUM(is_canceled) AS cancellations,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
+FROM hotel_bookings;
+```
+
+</details>
+
+---
+
+## Customer Type Distribution
+
+Transient customers dominate the dataset.
+
+| Customer Type | Bookings |
+|---------|---------:|
+| Transient | 89,613 |
+| Transient-Party | 25,124 |
+| Contract | 4,076 |
+| Group | 577 |
+
+Approximately 75% of all bookings belong to transient customers.
+
+---
+
+## Top Booking Countries
+
+The majority of reservations originate from European countries.
+
+| Country | Bookings |
+|---------|---------:|
+| PRT | 48,590 |
+| GBR | 12,129 |
+| FRA | 10,415 |
+| ESP | 8,568 |
+| DEU | 7,287 |
+
+Portugal represents the largest share of reservations by a substantial margin.
+
+---
+
+## Deposit Type Distribution
+
+Most reservations were made without a deposit.
+
+| Deposit Type | Bookings |
+|---------|---------:|
+| No Deposit | 104,641 |
+| Non Refund | 14,587 |
+| Refundable | 162 |
+
+---
+
+## Repeat Guest Distribution
+
+Only a small proportion of customers are repeat guests.
+
+| Repeat Guest | Bookings |
+|---------|---------:|
+| No | 115,580 |
+| Yes | 3,810 |
+
+Repeat guests account for approximately 3.2% of all reservations.
+
+---
+
+## Lead Time Overview
+
+| Metric | Days |
+|---------|---------:|
+| Minimum | 0 |
+| Average | 104.01 |
+| Maximum | 737 |
+
+Reservations are typically made more than three months before arrival.
+
+---
+
+## Length of Stay Overview
+
+| Metric | Nights |
+|---------|---------:|
+| Minimum | 0 |
+| Average | 3.43 |
+| Maximum | 69 |
+
+Most stays are relatively short, although a small number of extremely long stays are present.
+
+---
 
 # Hypothesis Testing
 
