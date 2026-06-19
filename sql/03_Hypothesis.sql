@@ -37,3 +37,15 @@ SELECT
     COUNT(*) AS bookings
 FROM hotel_bookings
 GROUP BY is_repeated_guest;
+
+-- H4: 
+SELECT
+    CASE
+        WHEN previous_cancellations = 0
+        THEN 'No previous cancellations'
+        ELSE 'At least one previous cancellation'
+    END AS category,
+    COUNT(*) AS bookings,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
+FROM hotel_bookings
+GROUP BY category;
