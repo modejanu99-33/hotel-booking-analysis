@@ -583,6 +583,67 @@ Previous cancellation behavior appears to be one of the strongest predictors of 
 
 The results strongly support **H₁**. Previous cancellation history is highly associated with future reservation cancellations and may serve as a valuable predictor for identifying high-risk bookings.
 
+## H5: Non-refundable deposits reduce the probability of cancellation
+
+### Hypotheses
+
+**H₀:** Non-refundable deposits do not reduce cancellation rates.
+
+**H₁:** Non-refundable deposits reduce cancellation rates.
+
+---
+
+### Results
+
+| Deposit Type | Bookings | Cancellation Rate |
+|----------|----------:|----------:|
+| Non Refund | 14,587 | 99.36% |
+| No Deposit | 104,641 | 28.38% |
+| Refundable | 162 | 22.22% |
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    deposit_type,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY deposit_type
+ORDER BY cancellation_rate DESC;
+```
+
+</details>
+
+Contrary to expectations, reservations with non-refundable deposits exhibited the highest cancellation rate in the dataset.
+
+---
+
+### Conditional Probability Interpretation
+
+P(Cancelled | Non Refund) = 0.9936
+
+P(Cancelled | No Deposit) = 0.2838
+
+P(Cancelled | Refundable) = 0.2222
+
+---
+
+### Interpretation
+
+The observed results do not support the initial assumption that non-refundable deposits discourage cancellations. Nearly all reservations associated with non-refundable deposits were cancelled.
+
+This unexpected finding suggests that the relationship between deposit type and reservation status may be influenced by specific business rules or recording practices and should therefore be interpreted with caution.
+
+---
+
+### Conclusion
+
+The results do not support **H₁**.
+
+In this dataset, reservations with non-refundable deposits exhibited substantially higher cancellation rates than reservations without deposits.
+
 # Conclusions
 
 *Work in progress.*
