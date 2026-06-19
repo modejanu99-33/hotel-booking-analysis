@@ -54,41 +54,6 @@ FROM hotel_bookings;
 
 ---
 
-## Missing Values Investigation
-
-Missing values were identified in several variables:
-
-- `agent`
-- `company`
-- `country`
-- `children`
-
-These variables require additional attention before conducting further analysis.
-
-<details>
-<summary>View SQL Queries</summary>
-
-```sql
-SELECT COUNT(*)
-FROM hotel_bookings
-WHERE country IS NULL;
-
-SELECT COUNT(*)
-FROM hotel_bookings
-WHERE children IS NULL;
-
-SELECT COUNT(*)
-FROM hotel_bookings
-WHERE agent IS NULL;
-
-SELECT COUNT(*)
-FROM hotel_bookings
-WHERE company IS NULL;
-```
-
-</details>
-
----
 
 ## Reservations Without Guests
 
