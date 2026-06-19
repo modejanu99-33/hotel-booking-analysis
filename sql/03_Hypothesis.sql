@@ -49,3 +49,22 @@ SELECT
     ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
 FROM hotel_bookings
 GROUP BY category;
+
+-- H5: 
+SELECT
+    deposit_type,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY deposit_type
+ORDER BY cancellation_rate DESC;
+-- H6: 
+SELECT
+    CASE
+        WHEN required_car_parking_spaces = 0 THEN 'No parking'
+        ELSE 'Parking requested'
+    END AS parking_group,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY parking_group;
