@@ -270,12 +270,30 @@ Repeat guests account for approximately 3.2% of all reservations.
 |---------|---------:|
 | Minimum | 0 |
 | Average | 104.01 |
+| 95th Percentile | 320 |
 | Maximum | 737 |
 
-Reservations are typically made more than three months before arrival.
+Reservations were typically made approximately 104 days before arrival.
 
----
+While the maximum lead time reached 737 days, 95% of all reservations were made within 320 days of arrival. This indicates that extremely early bookings were rare and should be treated as outliers rather than representative customer behavior.
 
+<details>
+<summary>View SQL Queries</summary>
+
+```sql
+SELECT
+    MIN(lead_time),
+    ROUND(AVG(lead_time),2),
+    MAX(lead_time)
+FROM hotel_bookings;
+
+SELECT
+    PERCENTILE_CONT(0.99)
+    WITHIN GROUP (ORDER BY lead_time)
+FROM hotel_bookings;
+```
+
+</details>
 ## Length of Stay Overview
 
 | Metric | Nights |
