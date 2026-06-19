@@ -374,6 +374,21 @@ The results support alternative hypothesis (H₁). Reservations made at City Hot
 | Not Cancelled | 75,166 | 79.98 | 91.11 |
 | Cancelled | 44,224 | 144.85 | 118.62 |
 
+<details>
+<summary>View SQL Queries</summary>
+
+```sql
+SELECT
+    is_canceled,
+    COUNT(*) AS bookings,
+    ROUND(AVG(lead_time),2) AS avg_lead_time,
+    ROUND(STDDEV(lead_time),2) AS std_lead_time
+FROM hotel_bookings
+GROUP BY is_canceled;
+```
+
+</details>
+
 Cancelled reservations were booked on average **64 days earlier** than reservations that were eventually completed.
 
 ---
@@ -404,13 +419,6 @@ FROM hotel_bookings
 GROUP BY lead_time_group
 ORDER BY lead_time_group;
 
-SELECT
-    is_canceled,
-    COUNT(*) AS bookings,
-    ROUND(AVG(lead_time),2) AS avg_lead_time,
-    ROUND(STDDEV(lead_time),2) AS std_lead_time
-FROM hotel_bookings
-GROUP BY is_canceled;
 ```
 
 </details>
