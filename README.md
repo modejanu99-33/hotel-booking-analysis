@@ -55,26 +55,6 @@ FROM hotel_bookings;
 ---
 
 
-## Reservations Without Guests
-
-A data quality check revealed 180 bookings where the number of adults, children, and babies was equal to zero.
-
-Such observations are unlikely in real-world hotel reservations and were flagged as anomalies.
-
-<details>
-<summary>View SQL Query</summary>
-
-```sql
-SELECT COUNT(*)
-FROM hotel_bookings
-WHERE adults = 0
-AND COALESCE(children,0) = 0
-AND COALESCE(babies,0) = 0;
-```
-
-</details>
-
----
 
 ## Missing Values Investigation
 
@@ -107,21 +87,6 @@ FROM hotel_bookings;
 
 ---
 
-## Lead Time Analysis
-
-The maximum lead time observed in the dataset was 737 days, indicating that some reservations were made approximately two years before arrival.
-
-<details>
-<summary>View SQL Query</summary>
-
-```sql
-SELECT MAX(lead_time)
-FROM hotel_bookings;
-```
-
-</details>
-
----
 
 ## ADR Outlier Detection
 
@@ -208,36 +173,6 @@ FROM hotel_bookings;
 
 ---
 
-## Customer Type Distribution
-
-Transient customers dominate the dataset.
-
-| Customer Type | Bookings |
-|---------|---------:|
-| Transient | 89,613 |
-| Transient-Party | 25,124 |
-| Contract | 4,076 |
-| Group | 577 |
-
-Approximately 75% of all bookings belong to transient customers.
-
----
-
-## Top Booking Countries
-
-The majority of reservations originate from European countries.
-
-| Country | Bookings |
-|---------|---------:|
-| PRT | 48,590 |
-| GBR | 12,129 |
-| FRA | 10,415 |
-| ESP | 8,568 |
-| DEU | 7,287 |
-
-Portugal represents the largest share of reservations by a substantial margin.
-
----
 
 ## Deposit Type Distribution
 
@@ -587,9 +522,13 @@ The results strongly support **H₁**. Previous cancellation history is highly a
 
 ### Hypotheses
 
-**H₀:** Non-refundable deposits do not reduce cancellation rates.
+## H5: Deposit type is associated with reservation cancellation
 
-**H₁:** Non-refundable deposits reduce cancellation rates.
+### Hypotheses
+
+**H₀:** Deposit type is not associated with reservation cancellation.
+
+**H₁:** Deposit type is associated with reservation cancellation.
 
 ---
 
@@ -616,9 +555,37 @@ ORDER BY cancellation_rate DESC;
 
 </details>
 
-Contrary to expectations, reservations with non-refundable deposits exhibited the highest cancellation rate in the dataset.
+Substantial differences in cancellation rates were observed across deposit types.
 
 ---
+
+### Conditional Probability Interpretation
+
+P(Cancelled | Non Refund) = 0.9936
+
+P(Cancelled | No Deposit) = 0.2838
+
+P(Cancelled | Refundable) = 0.2222
+
+---
+
+### Interpretation
+
+The results indicate a strong relationship between deposit type and reservation cancellation behavior.
+
+Reservations associated with the **Non Refund** deposit type exhibited an exceptionally high cancellation rate of 99.36%, while reservations with **No Deposit** and **Refundable** deposit types experienced substantially lower cancellation rates.
+
+This finding suggests that deposit type may be an important factor associated with reservation outcomes. However, the unusually high cancellation rate observed for non-refundable deposits may reflect specific business rules, booking policies, or data collection practices within the dataset and should therefore be interpreted with caution.
+
+---
+
+### Conclusion
+
+The results support **H₁**.
+
+Cancellation rates differ substantially across deposit types, indicating that deposit type is strongly associated with reservation cancellation behavior. Among all deposit categories, **Non Refund** reservations exhibited by far the highest cancellation rate.
+
+
 
 ### Conditional Probability Interpretation
 
