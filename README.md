@@ -101,6 +101,11 @@ SELECT
     COUNT(*) FILTER (WHERE country IS NULL) AS missing_country,
     COUNT(*) FILTER (WHERE children IS NULL) AS missing_children
 FROM hotel_bookings;
+```
+
+</details>
+
+---
 
 ## Lead Time Analysis
 
@@ -146,21 +151,3 @@ FROM hotel_bookings;
 ```
 
 </details>
-
----
-
-# Exploratory Data Analysis
-
-*Work in progress.*
-
----
-
-# Hypothesis Testing
-
-*Work in progress.*
-
----
-
-# Conclusions
-
-*Work in progress.*
