@@ -21,6 +21,15 @@ WHERE adults = 0
 AND COALESCE(children,0) = 0
 AND COALESCE(babies,0) = 0;
 
+-- Missing Values Summary
+
+SELECT
+    COUNT(*) FILTER (WHERE company IS NULL) AS missing_company,
+    COUNT(*) FILTER (WHERE agent IS NULL) AS missing_agent,
+    COUNT(*) FILTER (WHERE country IS NULL) AS missing_country,
+    COUNT(*) FILTER (WHERE children IS NULL) AS missing_children
+FROM hotel_bookings;
+
 -- Outlier Detection
 
 SELECT MAX(lead_time) AS max_lead_time
