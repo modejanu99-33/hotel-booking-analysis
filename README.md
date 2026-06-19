@@ -281,6 +281,10 @@ H₁: City Hotel reservations have a higher cancellation rate.
 | City Hotel | 79,330 | 33,102 | 41.73% |
 | Resort Hotel | 40,060 | 11,122 | 27.76% |
 
+<p align="center">
+  <img src="sql/hotel_type_cancellation.png" width="700">
+</p>
+
 ### Conditional Probability Interpretation
 
 P(Cancelled | City Hotel) = 0.4173
