@@ -76,6 +76,32 @@ AND COALESCE(babies,0) = 0;
 
 ---
 
+## Missing Values Investigation
+
+Missing values were identified in four variables.
+
+| Variable | Missing Values |
+|----------|---------------:|
+| company | 112593 |
+| agent | 16340 |
+| country | 488 |
+| children | 4 |
+
+The `company` variable contains missing values in more than 94% of all observations and was excluded from further analysis.
+
+The `agent` variable also contains a substantial number of missing values. Missing values in `country` and `children` represent only a small fraction of the dataset and are unlikely to significantly affect the analysis.
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    COUNT(*) FILTER (WHERE company IS NULL) AS missing_company,
+    COUNT(*) FILTER (WHERE agent IS NULL) AS missing_agent,
+    COUNT(*) FILTER (WHERE country IS NULL) AS missing_country,
+    COUNT(*) FILTER (WHERE children IS NULL) AS missing_children
+FROM hotel_bookings;
+
 ## Lead Time Analysis
 
 The maximum lead time observed in the dataset was 737 days, indicating that some reservations were made approximately two years before arrival.
