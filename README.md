@@ -466,6 +466,62 @@ GROUP BY is_canceled;
 ```
 
 </details>
+
+## H3: Repeated guests are less likely to cancel reservations
+
+### Hypotheses
+
+**H₀:** Repeated guests are equally or more likely to cancel reservations than non-repeated guests.
+
+**H₁:** Repeated guests are less likely to cancel reservations than non-repeated guests.
+
+---
+
+### Results
+
+| Repeated Guest | Bookings | Cancellation Rate |
+|----------|----------:|----------:|
+| No | 115,580 | 37.79% |
+| Yes | 3,810 | 14.49% |
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    is_repeated_guest,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY is_repeated_guest;
+```
+
+</details>
+The cancellation rate among repeated guests was substantially lower than among first-time guests.
+
+---
+
+### Conditional Probability Interpretation
+
+P(Cancelled | New Guest) = 0.3779
+
+P(Cancelled | Repeated Guest) = 0.1449
+
+Repeated guests were approximately 2.6 times less likely to cancel their reservations.
+
+---
+
+### Interpretation
+
+Customers who have previously stayed at the hotel appear to be  more committed to their reservations. Familiarity with the hotel and previous positive experiences may reduce the likelihood of cancellation.
+
+---
+
+### Conclusion
+
+The results strongly support **H₁**. Repeated guests exhibit substantially lower cancellation rates than first-time guests, suggesting that customer loyalty is associated with more reliable booking behavior.
+
+
 # Conclusions
 
 *Work in progress.*
