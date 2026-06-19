@@ -151,3 +151,15 @@ FROM hotel_bookings;
 ```
 
 </details>
+
+# Exploratory Data Analysis
+
+*Work in progress.*
+
+# Hypothesis Testing
+
+*Work in progress.*
+
+# Conclusions
+
+*Work in progress.*
