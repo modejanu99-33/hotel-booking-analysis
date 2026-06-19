@@ -706,6 +706,80 @@ The results strongly support **H₁**.
 Reservations that included parking requests were substantially less likely to be cancelled than reservations without parking requests. In this dataset, no cancellations were recorded among bookings requesting parking spaces.
 
 
+## H7: Longer stays are less likely to be cancelled
+
+### Hypotheses
+
+**H₀:** The average length of stay is the same for cancelled and non-cancelled reservations.
+
+**H₁:** Reservations with longer stays are less likely to be cancelled.
+
+---
+
+### Average Length of Stay by Reservation Status
+
+| Reservation Status | Bookings | Average Stay (Nights) | Standard Deviation |
+|----------|----------:|----------:|----------:|
+| Not Cancelled | 75,166 | 3.39 | 2.58 |
+| Cancelled | 44,224 | 3.49 | 2.52 |
+
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    is_canceled,
+    COUNT(*) AS bookings,
+    ROUND(
+        AVG(stays_in_week_nights + stays_in_weekend_nights),
+        2
+    ) AS avg_stay,
+    ROUND(
+        STDDEV(stays_in_week_nights + stays_in_weekend_nights),
+        2
+    ) AS std_stay
+FROM hotel_bookings
+GROUP BY is_canceled;
+```
+
+</details>
+
+Cancelled reservations had a slightly higher average length of stay than completed reservations.
+
+---
+
+### Student's t-Test
+
+A two-sample Student's t-test was performed to compare the average length of stay between cancelled and completed reservations.
+
+- Mean stay (not cancelled): 3.39 nights
+- Mean stay (cancelled): 3.49 nights
+- Difference: 0.10 nights
+- t-statistic ≈ 6.7
+- Critical value (α = 0.05) ≈ 1.645
+
+Since the calculated t-statistic exceeds the critical value, the null hypothesis is rejected.
+
+---
+
+### Interpretation
+
+Although the difference between the two groups is statistically significant, the observed effect is very small (approximately 0.10 nights).
+
+Moreover, the direction of the difference contradicts the original hypothesis. Cancelled reservations were associated with slightly longer stays than completed reservations.
+
+Therefore, length of stay does not appear to be a practically important predictor of reservation cancellations.
+
+---
+
+### Conclusion
+
+The results do not support **H₁**.
+
+While a statistically significant difference exists between the two groups, cancelled reservations were associated with slightly longer stays rather than shorter ones. The magnitude of the difference is very small and is unlikely to have meaningful practical importance.
+
+
 # Conclusions
 
 *Work in progress.*
