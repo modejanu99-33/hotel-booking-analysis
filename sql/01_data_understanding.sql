@@ -13,24 +13,6 @@ SELECT
 FROM hotel_bookings
 GROUP BY hotel;
 
--- Missing Values
-
-SELECT COUNT(*) AS missing_country
-FROM hotel_bookings
-WHERE country IS NULL;
-
-SELECT COUNT(*) AS missing_children
-FROM hotel_bookings
-WHERE children IS NULL;
-
-SELECT COUNT(*) AS missing_agent
-FROM hotel_bookings
-WHERE agent IS NULL;
-
-SELECT COUNT(*) AS missing_company
-FROM hotel_bookings
-WHERE company IS NULL;
-
 -- Data Quality Check
 
 SELECT COUNT(*) AS bookings_without_guests
