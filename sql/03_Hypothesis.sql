@@ -68,3 +68,17 @@ SELECT
     COUNT(*) AS bookings
 FROM hotel_bookings
 GROUP BY parking_group;
+-- H7: 
+SELECT
+    is_canceled,
+    COUNT(*) AS bookings,
+    ROUND(
+        AVG(stays_in_week_nights + stays_in_weekend_nights),
+        2
+    ) AS avg_stay,
+    ROUND(
+        STDDEV(stays_in_week_nights + stays_in_weekend_nights),
+        2
+    ) AS std_stay
+FROM hotel_bookings
+GROUP BY is_canceled;
