@@ -30,3 +30,10 @@ SELECT
     ROUND(STDDEV(lead_time),2) AS std_lead_time
 FROM hotel_bookings
 GROUP BY is_canceled;
+-- H3: 
+SELECT
+    is_repeated_guest,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY is_repeated_guest;
