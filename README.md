@@ -521,6 +521,66 @@ Customers who have previously stayed at the hotel appear to be  more committed t
 
 The results strongly support **H₁**. Repeated guests exhibit substantially lower cancellation rates than first-time guests, suggesting that customer loyalty is associated with more reliable booking behavior.
 
+## H4: Previous cancellations increase the likelihood of future cancellations
+
+### Hypotheses
+
+**H₀:** Guests with previous cancellations are equally or less likely to cancel future reservations.
+
+**H₁:** Guests with previous cancellations are more likely to cancel future reservations.
+
+---
+
+### Results
+
+| Category | Bookings | Cancellation Rate |
+|----------|----------:|----------:|
+| No previous cancellations | 112,906 | 33.91% |
+| At least one previous cancellation | 6,484 | 91.64% |
+
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    CASE
+        WHEN previous_cancellations = 0
+        THEN 'No previous cancellations'
+        ELSE 'At least one previous cancellation'
+    END AS category,
+    COUNT(*) AS bookings,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate
+FROM hotel_bookings
+GROUP BY category;
+```
+
+</details>
+
+
+Guests with a history of previous cancellations exhibited dramatically higher cancellation rates than guests without such a history.
+
+---
+
+### Conditional Probability Interpretation
+
+P(Cancelled | No Previous Cancellation) = 0.3391
+
+P(Cancelled | Previous Cancellation) = 0.9164
+
+Guests with at least one previous cancellation were approximately 2.7 times more likely to cancel a future reservation. If guest cancelled reservation before its more than 90 percentage points that he will cancel again.
+
+---
+
+### Interpretation
+
+Previous cancellation behavior appears to be one of the strongest predictors of future cancellations. Customers who have cancelled reservations in the past demonstrate a substantially higher probability of cancelling again.
+
+---
+
+### Conclusion
+
+The results strongly support **H₁**. Previous cancellation history is highly associated with future reservation cancellations and may serve as a valuable predictor for identifying high-risk bookings.
 
 # Conclusions
 
