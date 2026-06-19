@@ -504,7 +504,7 @@ P(Cancelled | No Previous Cancellation) = 0.3391
 
 P(Cancelled | Previous Cancellation) = 0.9164
 
-Guests with at least one previous cancellation were approximately 2.7 times more likely to cancel a future reservation. If guest cancelled reservation before its more than 90 percentage points that he will cancel again.
+Guests with at least one previous cancellation were approximately 2.7 times more likely to cancel a future reservation. 
 
 ---
 
@@ -518,9 +518,6 @@ Previous cancellation behavior appears to be one of the strongest predictors of 
 
 The results strongly support **H₁**. Previous cancellation history is highly associated with future reservation cancellations and may serve as a valuable predictor for identifying high-risk bookings.
 
-## H5: Non-refundable deposits reduce the probability of cancellation
-
-### Hypotheses
 
 ## H5: Deposit type is associated with reservation cancellation
 
@@ -586,30 +583,6 @@ The results support **H₁**.
 Cancellation rates differ substantially across deposit types, indicating that deposit type is strongly associated with reservation cancellation behavior. Among all deposit categories, **Non Refund** reservations exhibited by far the highest cancellation rate.
 
 
-
-### Conditional Probability Interpretation
-
-P(Cancelled | Non Refund) = 0.9936
-
-P(Cancelled | No Deposit) = 0.2838
-
-P(Cancelled | Refundable) = 0.2222
-
----
-
-### Interpretation
-
-The observed results do not support the initial assumption that non-refundable deposits discourage cancellations. Nearly all reservations associated with non-refundable deposits were cancelled.
-
-This unexpected finding suggests that the relationship between deposit type and reservation status may be influenced by specific business rules or recording practices and should therefore be interpreted with caution.
-
----
-
-### Conclusion
-
-The results do not support **H₁**.
-
-In this dataset, reservations with non-refundable deposits exhibited substantially higher cancellation rates than reservations without deposits.
 
 ## H6: Customers requesting parking spaces are less likely to cancel reservations
 
@@ -747,6 +720,51 @@ The results do not support **H₁**.
 While a statistically significant difference exists between the two groups, cancelled reservations were associated with slightly longer stays rather than shorter ones. The magnitude of the difference is very small and is unlikely to have meaningful practical importance.
 
 
-# Conclusions
+# Business Insights
 
-*Work in progress.*
+The analysis identified several factors strongly associated with reservation cancellations.
+
+### 1. City Hotels experience substantially higher cancellation rates
+
+City Hotels exhibited a cancellation rate of 41.73%, compared to 27.76% for Resort Hotels. This suggests that City Hotel bookings are inherently more volatile and may require additional cancellation management strategies.
+
+### 2. Lead time is one of the strongest predictors of cancellation
+
+Reservations made more than 180 days before arrival were cancelled in 57.01% of cases, compared to only 18.56% for reservations made within 30 days of arrival.
+
+Hotels may benefit from implementing confirmation reminders or flexible re-engagement campaigns for customers who book far in advance.
+
+### 3. Repeat guests are significantly more reliable
+
+The cancellation rate among repeat guests was only 14.49%, compared to 37.79% for first-time guests.
+
+This highlights the value of customer loyalty programs and repeat-customer retention strategies.
+
+### 4. Previous cancellation history strongly predicts future cancellations
+
+Guests with at least one previous cancellation exhibited a cancellation rate of 91.64%, compared to 33.91% for guests without a cancellation history.
+
+Previous cancellation behavior appears to be one of the strongest indicators of future booking risk.
+
+### 5. Deposit type is strongly associated with cancellation behavior
+
+Reservations classified as Non Refund exhibited a cancellation rate of 99.36%, substantially higher than other deposit categories.
+
+This unexpected result suggests that deposit type may reflect underlying booking policies or operational procedures.
+### 6. Parking requests are associated with highly committed customers
+
+No cancellations were observed among reservations requesting parking spaces.
+
+Parking requests may serve as a useful indicator of strong travel intent and commitment to the reservation.
+
+### 7. Length of stay has limited practical impact on cancellations
+
+Although a statistically significant difference was observed, the average stay length differed by only 0.10 nights between cancelled and completed reservations.
+
+Therefore, length of stay does not appear to be a meaningful predictor of cancellation behavior in practice.
+
+## Final Conclusion
+
+The analysis indicates that lead time, previous cancellation history, hotel type, repeat guest status, deposit type, and parking requests are all strongly associated with reservation cancellations.
+
+Among the examined factors, previous cancellation history and lead time emerged as the most influential predictors. These findings could help hotels identify high-risk bookings and develop more effective reservation management strategies.
