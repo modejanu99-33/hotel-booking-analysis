@@ -644,6 +644,68 @@ The results do not support **H₁**.
 
 In this dataset, reservations with non-refundable deposits exhibited substantially higher cancellation rates than reservations without deposits.
 
+## H6: Customers requesting parking spaces are less likely to cancel reservations
+
+### Hypotheses
+
+**H₀:** Customers requesting parking spaces are equally or more likely to cancel reservations.
+
+**H₁:** Customers requesting parking spaces are less likely to cancel reservations.
+
+---
+
+### Results
+
+| Parking Group | Bookings | Cancellation Rate |
+|----------|----------:|----------:|
+| No parking | 111,974 | 39.49% |
+| Parking requested | 7,416 | 0.00% |
+
+
+<details>
+<summary>View SQL Query</summary>
+
+```sql
+SELECT
+    CASE
+        WHEN required_car_parking_spaces = 0 THEN 'No parking'
+        ELSE 'Parking requested'
+    END AS parking_group,
+    ROUND(100.0 * AVG(is_canceled),2) AS cancellation_rate,
+    COUNT(*) AS bookings
+FROM hotel_bookings
+GROUP BY parking_group;
+```
+
+</details>
+
+Reservations that included a parking request exhibited no recorded cancellations in the dataset.
+
+---
+
+### Conditional Probability Interpretation
+
+P(Cancelled | No Parking) = 0.3949
+
+P(Cancelled | Parking Requested) = 0.0000
+
+---
+
+### Interpretation
+
+Customers requesting parking spaces appear to be significantly more committed to their reservations. A parking request may indicate stronger travel intentions and a higher likelihood of completing the stay.
+
+Notably, no cancellations were observed among reservations requesting parking spaces.
+
+---
+
+### Conclusion
+
+The results strongly support **H₁**.
+
+Reservations that included parking requests were substantially less likely to be cancelled than reservations without parking requests. In this dataset, no cancellations were recorded among bookings requesting parking spaces.
+
+
 # Conclusions
 
 *Work in progress.*
