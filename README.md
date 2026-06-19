@@ -294,6 +294,7 @@ FROM hotel_bookings;
 ```
 
 </details>
+
 ## Length of Stay Overview
 
 | Metric | Nights |
