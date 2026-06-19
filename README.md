@@ -330,7 +330,32 @@ FROM hotel_bookings;
 
 # Hypothesis Testing
 
-*Work in progress.*
+## H1: City Hotel reservations are cancelled more frequently than Resort Hotel reservations
+
+### Hypotheses
+
+H₀: Cancellation rates are equal for both hotel types.
+
+H₁: City Hotel reservations have a higher cancellation rate.
+
+### Results
+
+| Hotel | Bookings | Cancellations | Cancellation Rate |
+|---------|---------:|---------:|---------:|
+| City Hotel | 79,330 | 33,102 | 41.73% |
+| Resort Hotel | 40,060 | 11,122 | 27.76% |
+
+### Conditional Probability Interpretation
+
+P(Cancelled | City Hotel) = 0.4173
+
+P(Cancelled | Resort Hotel) = 0.2776
+
+The probability of cancellation is approximately 14 percentage points higher for City Hotels than for Resort Hotels.
+
+### Conclusion
+
+The results support alternative hypothesis (H₁). Reservations made at City Hotels are considerably more likely, approximately 14 percentage to be cancelled than reservations made at Resort Hotels.
 
 # Conclusions
 
