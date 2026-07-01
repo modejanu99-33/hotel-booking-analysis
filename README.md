@@ -2,39 +2,31 @@
 
 > **End-to-End Data Analytics Project using SQL, Python, Machine Learning and Power BI**
 
----
-# 🗺️ Project Workflow
+# 🗺️ End-to-End Analytics Workflow
 
-```
-📂 Hotel Booking Dataset
-            │
-            ▼
+```text
+📂 Raw Dataset
+      │
+      ▼
 🧹 Data Cleaning
-(Python & Pandas)
-            │
-            ▼
+      │
+      ▼
 📊 Exploratory Data Analysis
-(EDA & Visualisations)
-            │
-            ▼
+      │
+      ▼
 🗄️ SQL Business Analysis
-(Business Questions)
-            │
-            ▼
+      │
+      ▼
 📈 Power BI Dashboard
-(Interactive Insights)
-            │
-            ▼
-🤖 Machine Learning
-(Logistic Regression)
-            │
-            ▼
+      │
+      ▼
+🤖 Predictive Machine Learning
+      │
+      ▼
 ⭐ ML Booking Reliability Index
-(ML-BRI Score)
-            │
-            ▼
+      │
+      ▼
 💡 Business Recommendations
-(Actionable Insights)
 ```
 # 📖 Introduction
 
