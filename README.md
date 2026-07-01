@@ -115,3 +115,102 @@ The following section investigates these observations through SQL-based business
 </details>
 
 ---
+
+# ❓ Business Question 1
+
+## Which booking window should the hotel prioritise to reduce cancellation losses?
+<img width="657" height="392" alt="Booking window, cancl rate" src="https://github.com/user-attachments/assets/ea5bd450-cfa5-4d54-8920-93a08df157bc" />
+
+
+<details>
+<summary><b>📖 Click to view SQL findings</b></summary>
+
+### 🔍 SQL Findings
+
+The SQL analysis revealed a clear relationship between booking lead time and cancellation behaviour.
+
+| Booking Window | Cancellation Rate |
+|---------------|------------------:|
+| 0–7 Days | **9.7%** |
+| 8–30 Days | **28.0%** |
+| 31–90 Days | **37.8%** |
+| 91–180 Days | **44.8%** |
+| 180+ Days | **57.1%** |
+
+Cancellation rates increase consistently as the booking window becomes longer, with reservations made more than **180 days** before arrival representing the highest-risk group.
+
+### 🎯 Why it matters
+
+Guests who book far in advance have more time to change their travel plans, increasing the likelihood of cancellation.
+
+Understanding this pattern allows hotels to identify high-risk reservations early and supports the development of targeted strategies to reduce future cancellation losses.
+
+</details>
+
+---
+
+# ❓ Business Question 2
+
+## Do special requests indicate stronger booking commitment?
+<img width="682" height="397" alt="special req, canc" src="https://github.com/user-attachments/assets/462e0e8e-7337-4676-a1c1-5a57edd60124" />
+
+
+<details>
+<summary><b>📖 Click to view SQL findings</b></summary>
+
+### 🔍 SQL Findings
+
+The SQL analysis identified a strong inverse relationship between the number of special requests and booking cancellations.
+
+| Special Requests | Cancellation Rate |
+|-----------------:|------------------:|
+| 0 | **48.0%** |
+| 1 | **22.1%** |
+| 2 | **22.2%** |
+| 3 | **17.9%** |
+| 4 | **10.6%** |
+| 5 | **5.0%** |
+
+Guests who made **no special requests** had the highest cancellation rate. As the number of special requests increased, cancellation rates decreased substantially.
+
+### 🎯 Why it matters
+
+Special requests appear to reflect genuine booking intent rather than casual reservations.
+
+Guests who actively personalise their stay are more likely to complete their reservation, making special requests a valuable behavioural indicator of booking reliability.
+
+</details>
+
+---
+# ❓ Business Question 3
+
+## Are repeat guests more reliable than first-time guests?
+
+<img width="1402" height="791" alt="repeat customer" src="https://github.com/user-attachments/assets/595fb581-c681-4a59-9fbb-d44193fe917d" />
+
+
+<details>
+<summary><b>📖 Click to view SQL findings</b></summary>
+
+### 🔍 SQL Findings
+
+Repeat guests account for only **2.95%** of all bookings but demonstrate substantially higher booking reliability than first-time guests.
+
+| Customer Type | Cancellation Rate |
+|--------------|------------------:|
+| First-time Guest | **37.9%** |
+| Repeat Guest | **15.7%** |
+
+Although repeat guests generate a lower average daily rate (**€70.19** vs **€103.46**), they cancel reservations far less frequently.
+
+### 🎯 Why it matters
+
+Customer loyalty appears to reduce booking uncertainty.
+
+While repeat guests contribute a smaller share of total bookings, their significantly lower cancellation rate makes them a valuable customer segment for improving occupancy stability and reducing cancellation-related losses.
+
+> 🤖 **Machine Learning Validation:** Logistic Regression also identified **Repeat Guests** as one of the strongest predictors associated with lower cancellation risk.
+
+</details>
+
+---
