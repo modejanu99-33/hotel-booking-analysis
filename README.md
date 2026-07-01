@@ -42,32 +42,52 @@ The project aims to answer the following business questions:
 
 ---
 
-# 📂 Dataset
-
-The analysis is based on the **Hotel Booking Demand Dataset**, containing reservation records from both **City Hotel** and **Resort Hotel** between **July 2015 and August 2017**.
-
-### Dataset Summary
-
-| Attribute | Value |
-|-----------|------:|
-| 📚 Total Bookings | 119,390 |
-| 🧹 Cleaned Bookings | 118,559 |
-| 📑 Features | 32 |
-| 🎯 Target Variable | `is_canceled` |
-
-The dataset contains information about:
-
-- 👥 Guest characteristics
-- 🏨 Hotel type
-- 📅 Booking behaviour
-- 💳 Deposit policy
-- 💰 Average Daily Rate (ADR)
-- 🌍 Country of origin
-- 🛏️ Room reservations
-- ⭐ Special requests
-- 🔁 Previous booking history
-
----
+# 🧹 Data Cleaning
 
 <img width="1466" height="980" alt="Data cleaning" src="https://github.com/user-attachments/assets/7c4e570f-5494-424e-b036-d7deed965066" />
+
+
+# 📊 Exploratory Data Analysis (EDA)
+
+Before investigating specific business questions, an exploratory data analysis (EDA) was conducted to understand the overall structure of the dataset and identify potential booking patterns.
+
+The EDA explored booking behaviour, reservation outcomes, pricing, customer characteristics, and relationships between variables. These observations served as the foundation for the SQL analysis and Machine Learning models developed later in the project.
+
+The most important findings are summarised below.
+
+---
+<img width="720" height="450" alt="EDA 1" src="https://github.com/user-attachments/assets/bdf219df-4924-4e4c-b064-f02925716163" />
+
+
+### 🏨 Hotel Booking Distribution
+
+City Hotels account for the majority of reservations in the dataset, representing approximately two-thirds of all bookings. This imbalance highlights the importance of analysing cancellation behaviour separately for different hotel types.
+
+<img width="727" height="480" alt="EDA 2" src="https://github.com/user-attachments/assets/3f8bb576-17c0-45b8-b996-068b102a98f9" />
+
+### 📉 Reservation Status
+
+Most reservations resulted in successful check-outs; however, more than one-third of all bookings were cancelled. This confirms that booking cancellations represent a significant operational and financial challenge for hotels.
+
+<img width="1007" height="477" alt="EDA 3" src="https://github.com/user-attachments/assets/3bba20e7-b547-49a7-8ff8-eac3abf7720c" />
+
+### ⏳ Lead Time Distribution
+
+Reservations range from same-day bookings to bookings made nearly two years in advance. The wide distribution suggests that booking lead time may play an important role in cancellation behaviour and deserves further investigation.
+
+<img width="1372" height="987" alt="EDA 4" src="https://github.com/user-attachments/assets/54e175b3-c96a-4787-baba-787025286108" />
+
+### 🔗 Correlation Matrix
+
+Most numerical variables exhibit relatively weak linear correlations. Nevertheless, several behavioural features show meaningful relationships with booking cancellations, supporting their inclusion in the Machine Learning model.
+
+### 📝 Key Observations
+
+- 🏨 City Hotels received considerably more bookings than Resort Hotels.
+- 📉 More than one-third of reservations were cancelled.
+- ⏳ Booking lead times vary substantially across customers.
+- 🔗 Behavioural variables appear more informative than simple numerical variables.
+
+These findings motivated the SQL-based business questions presented in the following section.
+
 
