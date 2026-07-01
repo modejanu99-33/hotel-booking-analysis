@@ -1,23 +1,41 @@
 # 🏨 Hotel Booking Reliability & Cancellation Analysis
-Raw Dataset
-      ↓
-Data Cleaning (Python)
-      ↓
-Exploratory Data Analysis
-      ↓
-SQL Business Analysis
-      ↓
-Power BI Dashboard
-      ↓
-Machine Learning
-      ↓
-ML Booking Reliability Index
-      ↓
-Business Recommendations
+
 > **End-to-End Data Analytics Project using SQL, Python, Machine Learning and Power BI**
 
 ---
+# 🗺️ Project Workflow
 
+```text
+📂 Hotel Booking Dataset
+            │
+            ▼
+🧹 Data Cleaning
+(Python & Pandas)
+            │
+            ▼
+📊 Exploratory Data Analysis
+(EDA & Visualisations)
+            │
+            ▼
+🗄️ SQL Business Analysis
+(Business Questions)
+            │
+            ▼
+📈 Power BI Dashboard
+(Interactive Insights)
+            │
+            ▼
+🤖 Machine Learning
+(Logistic Regression)
+            │
+            ▼
+⭐ ML Booking Reliability Index
+(ML-BRI Score)
+            │
+            ▼
+💡 Business Recommendations
+(Actionable Insights)
+```
 # 📖 Introduction
 
 Hotel booking cancellations represent one of the biggest operational challenges in the hospitality industry. Unexpected cancellations reduce occupancy, impact revenue forecasting, complicate staff planning, and limit opportunities to resell available rooms.
