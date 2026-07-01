@@ -15,19 +15,21 @@ To achieve this, the project combines **SQL**, **Python**, **Machine Learning**,
 A key contribution of this project is the development of the **Machine Learning Booking Reliability Index (ML-BRI)**, a scoring system that converts cancellation probabilities into an interpretable reliability score ranging from **0 to 100**, allowing hotels to identify both high-risk and highly reliable reservations.
 
 '''
+## 📑 Table of Contents
 
-# 🎯 Project Objectives
+- 📖 Introduction
+- 🎯 Project Objectives
+- 🛠️ Technology Stack
+- 🧹 Data Cleaning
+- 📊 Exploratory Data Analysis
+- 📈 Executive Dashboard
+- ❓ Business Questions
+- 🤖 Machine Learning
+- ⭐ ML Booking Reliability Index
+- 🔍 Sensitivity Analysis
+- 💡 Business Recommendations
 
-The project aims to answer the following business questions:
 
-- 📌 Identify the main factors influencing hotel booking cancellations.
-- 📊 Explore booking behaviour through SQL analysis and Power BI visualisations.
-- 🔍 Investigate how customer characteristics affect booking reliability.
-- 🤖 Develop a Machine Learning model to predict booking cancellations.
-- ⭐ Create a Machine Learning Booking Reliability Index (ML-BRI).
-- 💼 Provide actionable business recommendations for hotel management.
-
----
 # 🛠️ Technology Stack
 
 | Technology | Purpose |
@@ -81,13 +83,35 @@ Reservations range from same-day bookings to bookings made nearly two years in a
 
 Most numerical variables exhibit relatively weak linear correlations. Nevertheless, several behavioural features show meaningful relationships with booking cancellations, supporting their inclusion in the Machine Learning model.
 
-### 📝 Key Observations
+---
 
-- 🏨 City Hotels received considerably more bookings than Resort Hotels.
-- 📉 More than one-third of reservations were cancelled.
-- ⏳ Booking lead times vary substantially across customers.
-- 🔗 Behavioural variables appear more informative than simple numerical variables.
+The exploratory analysis provided an initial understanding of booking behaviour and highlighted several potential risk factors.
 
-These findings motivated the SQL-based business questions presented in the following section.
+The following section investigates these observations through SQL-based business questions and interactive Power BI visualisations.
 
 
+# 📈 Executive Dashboard
+<img width="1427" height="800" alt="Ex  Dashboard" src="https://github.com/user-attachments/assets/1f2d23b6-890a-4cd5-8bf1-40759a815526" />
+
+
+<details>
+<summary><b>📖 Click to view dashboard insights</b></summary>
+
+### Dashboard Highlights
+
+- 📚 119K hotel bookings analysed
+- ❌ 37.3% cancellation rate
+- 💶 €42.71M potential revenue
+- 📉 €16.72M potential revenue loss
+- 💰 €102.5 average ADR
+
+### Key Insights
+
+- 🌐 Online TA generated the highest revenue loss.
+- 🏨 City Hotels experienced significantly higher cancellation rates.
+- 📅 Booking demand and cancellations peak during summer.
+- 💼 Nearly 40% of potential revenue is affected by cancellations.
+
+</details>
+
+---
