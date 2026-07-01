@@ -405,3 +405,21 @@ Model A achieved the highest predictive performance by incorporating **deposit_t
 However, Model B demonstrated that removing this dominant variable resulted in only a modest reduction in performance.
 
 This sensitivity analysis confirms that the model does not rely exclusively on cancellation policy and that customer behaviour remains a strong predictor of booking reliability.
+
+# 🚀 Project Summary
+
+This project demonstrates a complete end-to-end data analytics workflow, beginning with raw hotel booking data and concluding with practical business recommendations.
+
+The project combines SQL, Python, Machine Learning, and Power BI to transform historical booking data into actionable insights that support hotel revenue management and operational decision-making.
+
+---
+
+<img width="1536" height="1024" alt="Summar" src="https://github.com/user-attachments/assets/0fe1f3f8-b74a-4116-b22d-615d71c0a3ea" />
+
+
+---
+
+### ⭐ Final Takeaway
+
+This project demonstrates how **SQL**, **Python**, **Machine Learning**, and **Power BI** can be combined to transform historical hotel booking data into a practical decision-support system for hotel revenue management.
+
