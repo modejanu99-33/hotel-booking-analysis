@@ -459,3 +459,12 @@ The project combines SQL, Python, Machine Learning, and Power BI to transform hi
 
 This project demonstrates how **SQL**, **Python**, **Machine Learning**, and **Power BI** can be combined to transform historical hotel booking data into a practical decision-support system for hotel revenue management.
 
+# 🙏 Acknowledgements
+
+Dataset provided by:
+
+Jesse Mostipak
+
+Kaggle – Hotel Booking Demand Dataset
+
+https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand
