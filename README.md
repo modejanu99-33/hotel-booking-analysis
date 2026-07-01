@@ -70,6 +70,16 @@ A key contribution of this project is the development of the **Machine Learning 
 
 ---
 
+# 📂 Dataset
+
+| Attribute | Value |
+|-----------|-------|
+| Source | Kaggle |
+| Records | 119,390 |
+| Variables | 32 |
+| Hotels | City Hotel & Resort Hotel |
+| Target Variable | is_canceled |
+
 # 🧹 Data Cleaning
 
 <img width="1466" height="980" alt="Data cleaning" src="https://github.com/user-attachments/assets/7c4e570f-5494-424e-b036-d7deed965066" />
