@@ -1,5 +1,19 @@
 # 🏨 Hotel Booking Reliability & Cancellation Analysis
-
+Raw Dataset
+      ↓
+Data Cleaning (Python)
+      ↓
+Exploratory Data Analysis
+      ↓
+SQL Business Analysis
+      ↓
+Power BI Dashboard
+      ↓
+Machine Learning
+      ↓
+ML Booking Reliability Index
+      ↓
+Business Recommendations
 > **End-to-End Data Analytics Project using SQL, Python, Machine Learning and Power BI**
 
 ---
@@ -15,6 +29,8 @@ To achieve this, the project combines **SQL**, **Python**, **Machine Learning**,
 A key contribution of this project is the development of the **Machine Learning Booking Reliability Index (ML-BRI)**, a scoring system that converts cancellation probabilities into an interpretable reliability score ranging from **0 to 100**, allowing hotels to identify both high-risk and highly reliable reservations.
 
 '''
+
+
 ## 📑 Table of Contents
 
 - 📖 Introduction
