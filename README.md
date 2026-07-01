@@ -269,9 +269,13 @@ The model was trained using customer characteristics, booking behaviour, reserva
 | F1 Score | **66.0%** |
 | ROC AUC | **82.6%** |
 
-### 📝 Interpretation
+### 📝 Model Interpretation
 
-The model correctly classified approximately **80%** of hotel bookings and achieved a strong **ROC AUC of 0.826**, indicating good ability to distinguish between cancelled and non-cancelled reservations.
+- ✅ **Accuracy (79.5%)** — Nearly 8 out of 10 bookings were classified correctly.
+- 🎯 **Precision (86.3%)** — When the model predicts a cancellation, it is correct most of the time.
+- 🔍 **Recall (53.4%)** — The model identifies over half of all actual cancellations.
+- ⚖️ **F1 Score (66.0%)** — Indicates a balanced trade-off between precision and recall.
+- 📈 **ROC AUC (82.6%)** — Demonstrates good overall ability to distinguish cancelled from non-cancelled bookings.
 
 ---
 
@@ -335,3 +339,69 @@ Instead of reviewing raw cancellation probabilities, hotel managers can quickly 
 </details>
 
 ---
+
+# 🔍 Sensitivity Analysis (Model B)
+
+To better understand the influence of **deposit_type**, a second Logistic Regression model (**Model B**) was developed after removing this variable from the feature set.
+
+The objective was to determine whether customer behaviour alone could accurately predict booking cancellations.
+
+---
+
+## 📊 Model Performance
+
+| Metric | Model A | Model B |
+|---------|---------:|---------:|
+| Accuracy | **79.5%** | 77.3% |
+| Precision | **86.3%** | 75.1% |
+| Recall | 53.4% | **58.6%** |
+| F1 Score | **66.0%** | 65.8% |
+| ROC AUC | **82.6%** | 80.4% |
+
+### 📝 Key Findings
+
+Although **deposit_type** was removed, the overall model performance changed only slightly.
+
+This suggests that customer behaviour features alone contain substantial predictive information and can explain cancellation risk even without policy-related variables.
+
+---
+
+## 📈 Feature Importance (Model B)
+
+<img width="1327" height="722" alt="ML model b" src="https://github.com/user-attachments/assets/c01b38bf-2e39-4e19-9bd0-7331f7eeb7f6" />
+
+
+<details>
+<summary><b>📖 Click to view feature interpretation</b></summary>
+
+### 🔍 Key Findings
+
+After removing **deposit_type**, the importance of behavioural variables became much more apparent.
+
+| Rank | Feature | Effect |
+|-----:|----------|--------|
+| 1 | Previous Cancellations | 🔺 Strongly increases cancellation risk |
+| 2 | Transient Customer | 🔺 Increases cancellation risk |
+| 3 | Repeat Guest | 🔻 Reduces cancellation risk |
+| 4 | GDS Distribution Channel | 🔻 Reduces cancellation risk |
+| 5 | Special Requests | 🔻 Reduces cancellation risk |
+
+Unlike Model A, the strongest predictors are now driven almost entirely by customer behaviour rather than booking policy.
+
+### 🎯 Why it matters
+
+Model B demonstrates that reliable behavioural indicators remain highly predictive even without using **deposit_type**.
+
+This confirms that booking history, customer loyalty, and reservation behaviour provide valuable information for identifying high-risk bookings.
+
+</details>
+
+---
+
+## 💡 Model Comparison
+
+Model A achieved the highest predictive performance by incorporating **deposit_type**, making it the preferred model for operational deployment.
+
+However, Model B demonstrated that removing this dominant variable resulted in only a modest reduction in performance.
+
+This sensitivity analysis confirms that the model does not rely exclusively on cancellation policy and that customer behaviour remains a strong predictor of booking reliability.
